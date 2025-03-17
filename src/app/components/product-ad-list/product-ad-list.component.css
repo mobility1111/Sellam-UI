@@ -1,0 +1,117 @@
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #003d80);
+    transform: scale(1.05);
+  }
+  
+  .btn-outline-secondary {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .alert {
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    padding: 12px;
+  }
+  
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 4px;
+    color: #007bff;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-header {
+    background: #f8f9fa;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .card-footer {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .badge {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+  
+  .bg-success {
+    background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+  }
+  
+  .bg-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3) !important;
+  }
+  
+  .bg-secondary {
+    background: linear-gradient(135deg, #6c757d, #495057) !important;
+  }
+  
+  @media (max-width: 768px) {
+    .row-cols-md-2 .col {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    
+    .btn {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+  

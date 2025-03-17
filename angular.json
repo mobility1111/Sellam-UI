@@ -5,7 +5,11 @@
   "projects": {
     "Sellam": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "css"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -29,6 +33,7 @@
             ],
             "scripts": []
           },
+          
           "configurations": {
             "production": {
               "budgets": [

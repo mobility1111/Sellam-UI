@@ -1,0 +1,65 @@
+<div class="container mt-4">
+    <h2>Edit Product Ad</h2>
+    
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    
+    <form [formGroup]="editProductAdForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" formControlName="title" class="form-control" />
+        <div *ngIf="f['title'].touched && f['title'].errors">
+          <small *ngIf="f['title'].errors?.['required']" class="text-danger">Title is required</small>
+          <small *ngIf="f['title'].errors?.['maxlength']" class="text-danger">Title must be less than 100 characters</small>
+        </div>
+      </div>
+      
+      <!-- <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        <div *ngIf="f['description'].touched && f['description'].errors">
+          <small *ngIf="f['description'].errors?.['required']" class="text-danger">Description is required</small>
+        </div>
+      </div> -->
+      
+      <div class="mb-3">
+        <label for="currency" class="form-label">Currency</label>
+        <select id="currency" formControlName="currency" class="form-control">
+          <option value="" disabled>Select Currency</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="NGN">NGN</option>
+        </select>
+        <div *ngIf="f['currency'].touched && f['currency'].errors">
+          <small *ngIf="f['currency'].errors?.['required']" class="text-danger">Currency is required</small>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" id="amount" formControlName="amount" class="form-control" />
+        <div *ngIf="f['amount'].touched && f['amount'].errors">
+          <small *ngIf="f['amount'].errors?.['required']" class="text-danger">Amount is required</small>
+          <small *ngIf="f['amount'].errors?.['min']" class="text-danger">Amount must be greater than or equal to 0</small>
+        </div>
+      </div>
+      
+      <!-- <div class="mb-3">
+        <label for="adType" class="form-label">Ad Type</label>
+        <select id="adType" formControlName="adType" class="form-control">
+          <option value="" disabled>Select Ad Type</option>
+          <option value="Basic">Basic</option>
+          <option value="Premium">Standard</option>
+          <option value="Premium">Premium</option>
+        </select>
+        <div *ngIf="f['adType'].touched && f['adType'].errors">
+          <small *ngIf="f['adType'].errors?.['required']" class="text-danger">Ad Type is required</small>
+        </div>
+      </div> -->
+      
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading || editProductAdForm.invalid">
+        <span *ngIf="isLoading">Updating...</span>
+        <span *ngIf="!isLoading">Update Ad</span>
+      </button>
+    </form>
+  </div>

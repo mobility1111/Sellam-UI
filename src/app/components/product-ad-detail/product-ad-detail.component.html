@@ -1,0 +1,126 @@
+<div class="container mt-4">
+    <div *ngIf="loading" class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    <div *ngIf="!loading && productAd" class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h4>Product Ad Details</h4>
+        <div>
+          <button class="btn btn-outline-primary me-2" (click)="navigateToEdit()">
+            <i class="bi bi-pencil"></i> Edit
+          </button>
+          <button class="btn btn-outline-secondary" (click)="navigateBack()">
+            <i class="bi bi-arrow-left"></i> Back to List
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row mb-4">
+          <div class="col-md-8">
+            <h3>{{ productAd.title }}</h3>
+            <div class="badge me-2" [ngClass]="{
+              'bg-success': productAd.adType === 'Premium',
+              'bg-primary': productAd.adType === 'Standard',
+              'bg-secondary': productAd.adType === 'Basic'
+            }">{{ productAd.adType }}</div>
+            <div class="badge" [ngClass]="productAd.isActive ? 'bg-success' : 'bg-danger'">
+              {{ productAd.isActive ? 'Active' : 'Inactive' }}
+            </div>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <h4>{{ productAd.currency }} {{ productAd.amount }}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="mb-0">Ad Information</h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-borderless">
+                  <tbody>
+                    <tr>
+                      <th scope="row">ID:</th>
+                      <td>{{ productAd.id }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Title:</th>
+                      <td>{{ productAd.title }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Price:</th>
+                      <td>{{ productAd.currency }} {{ productAd.amount }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Ad Type:</th>
+                      <td>{{ productAd.adType }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Status:</th>
+                      <td>
+                        <app-product-ad-toggle 
+                          [adId]="productAd.id" 
+                          [isActive]="productAd.isActive ?? false"
+                          (statusChanged)="onStatusChanged($event)">
+                        </app-product-ad-toggle>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <!-- <div class="card h-100">
+              <div class="card-header">
+                <h5 class="mb-0">Ad Type Benefits</h5>
+              </div>
+              <div class="card-body">
+                <ng-container [ngSwitch]="getFormattedAdType()">
+                    <ng-container *ngSwitchCase="'basic'">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Standard listing in search results</li>
+                        <li class="list-group-item">Basic visibility on the platform</li>
+                        <li class="list-group-item">Standard analytics</li>
+                      </ul>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'standard'">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Enhanced placement in search results</li>
+                        <li class="list-group-item">Featured in category pages</li>
+                        <li class="list-group-item">Advanced analytics dashboard</li>
+                        <li class="list-group-item">Priority customer support</li>
+                      </ul>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'premium'">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Top placement in search results</li>
+                        <li class="list-group-item">Featured on homepage rotation</li>
+                        <li class="list-group-item">Highlighted as "Premium" listing</li>
+                        <li class="list-group-item">Real-time analytics dashboard</li>
+                        <li class="list-group-item">Dedicated customer success manager</li>
+                      </ul>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                      <p class="text-muted">No benefits available for this ad type.</p>
+                    </ng-container>
+                  </ng-container>
+                  
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+          <button class="btn btn-primary" (click)="navigateToEdit()">
+            <i class="bi bi-pencil"></i> Edit Ad
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

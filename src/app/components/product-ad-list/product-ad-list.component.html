@@ -1,0 +1,62 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Product Advertisements</h2>
+      <div>
+        <button class="btn btn-primary me-2" [routerLink]="['/create-product-ad']">
+          <i class="bi bi-plus-circle"></i> Create New Ad
+        </button>
+        <button class="btn btn-outline-secondary" (click)="toggleFilter()">
+          Show {{ isActiveFilter ? 'Inactive' : 'Active' }} Ads
+        </button>
+      </div>
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <div *ngIf="loading" class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    
+    <div *ngIf="!loading && productAds.length === 0" class="alert alert-info">
+      No {{ isActiveFilter ? 'active' : 'inactive' }} product ads found.
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let ad of productAds">
+        <div class="card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span class="badge" [ngClass]="{
+              'bg-success': ad.adType === 'Premium',
+              'bg-primary': ad.adType === 'Standard',
+              'bg-secondary': ad.adType === 'Basic'
+            }">{{ ad.adType }}</span>
+            <app-product-ad-toggle
+               [adId]="ad.id"
+               [isActive]="ad.isActive ?? false"
+               (statusChanged)="onStatusChanged(ad, $event)">
+            </app-product-ad-toggle>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ ad.title }}</h5>
+            <p class="card-text">{{ ad.currency }} {{ ad.amount }}</p>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-sm btn-outline-primary"
+                       [routerLink]="['/product-ad', ad.id]">
+                <i class="bi bi-eye"></i> View
+              </button>
+              <button class="btn btn-sm btn-outline-secondary"
+                       [routerLink]="['/edit-product-ad', ad.id]">
+                <i class="bi bi-pencil"></i> Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

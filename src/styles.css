@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css or styles.scss */
+body {
+    padding-top: 90px; /* Adjust based on your navbar height plus desired spacing */
+  }
+  
+  .main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }

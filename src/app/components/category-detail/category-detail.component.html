@@ -1,0 +1,28 @@
+<div *ngIf="!loading && !error && category" class="category-details">
+  <h3 class="category-title">Category Information</h3>
+  
+  <div class="detail-row">
+    <span class="label">ID:</span>
+    <span class="value">{{ category.id }}</span>
+  </div>
+  
+  <div class="detail-row">
+    <span class="label">Name:</span>
+    <span class="value">{{ category.name }}</span>
+  </div>
+  
+  <div class="detail-row">
+    <span class="label">Description:</span>
+    <span class="value">{{ category.description }}</span>
+  </div>
+  
+  <div class="detail-row">
+    <span class="label">Image:</span>
+    <div class="value image-container">
+      <img *ngIf="category.image" [src]="category.image" alt="{{ category.name }}" class="category-image">
+      <span *ngIf="!category.image" class="no-image">No image available</span>
+    </div>
+  </div>
+
+  <button class="btn-back" (click)="goBack()">← Back to List</button>
+</div>

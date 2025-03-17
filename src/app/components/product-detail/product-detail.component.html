@@ -1,0 +1,151 @@
+
+<div class="container mt-4">
+    <button routerLink="/products" class="btn btn-link mb-3">← Back to Products</button>
+    
+    <div *ngIf="loading" class="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span class="ms-2">Loading product details...</span>
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    
+    <div *ngIf="product && !loading && !error" class="product-detail">
+      <div class="row">
+        <!-- Product Images Section -->
+        <div class="col-md-6 mb-4">
+          <div *ngIf="product.images && product.images.length > 0" class="product-image-gallery">
+            <div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div *ngFor="let image of product.images; let i = index" 
+                     [ngClass]="{'carousel-item': true, 'active': i === 0}">
+                  <img [src]="image" class="d-block w-100" alt="Product Image"
+                       style="max-height: 400px; object-fit: contain;">
+                </div>
+              </div>
+              <button *ngIf="product.images.length > 1" class="carousel-control-prev" type="button" 
+                      data-bs-target="#productImageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button *ngIf="product.images.length > 1" class="carousel-control-next" type="button" 
+                      data-bs-target="#productImageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            
+            <!-- Thumbnail navigation for multiple images -->
+            <div *ngIf="product.images.length > 1" class="row mt-2">
+              <div *ngFor="let image of product.images; let i = index" class="col-3 mb-2">
+                <img [src]="image" class="img-thumbnail" 
+                     style="cursor: pointer; height: 80px; object-fit: cover;"
+                     (click)="setActiveImage(i)"
+                     alt="Thumbnail">
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="!product.images || product.images.length === 0" 
+               class="no-image d-flex justify-content-center align-items-center bg-light" 
+               style="height: 400px;">
+            <span class="text-muted">No Image Available</span>
+          </div>
+        </div>
+        
+        <!-- Product Details Section -->
+        <div class="col-md-6">
+          <h2>{{ product.title }}</h2>
+          <div class="badges mb-3">
+            <span class="badge bg-info me-2">{{ product.condition }}</span>
+            <span *ngIf="product.isNegotiable" class="badge bg-success me-2">Negotiable</span>
+            <span class="badge bg-secondary">{{ product.year }}</span>
+          </div>
+          
+          <div class="product-price mb-3">
+            <h3>{{ product.price }} {{ product.currency }}</h3>
+          </div>
+          
+          <div class="product-specs mb-4">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th>Brand</th>
+                  <td>{{ product.brand }}</td>
+                </tr>
+                <tr *ngIf="product.model">
+                  <th>Model</th>
+                  <td>{{ product.model }}</td>
+                </tr>
+                <tr>
+                  <th>Year</th>
+                  <td>{{ product.year }}</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td>{{ product.isActive ? 'Active' : 'Inactive' }}</td>
+                </tr>
+                <tr>
+                  <th>Approval</th>
+                  <td>{{ product.isApproved ? 'Approved' : 'Pending Approval' }}</td>
+                </tr>
+                <tr>
+                  <th>Rating</th>
+                  <td>
+                    <div class="rating-stars">
+                      <i *ngFor="let star of [1,2,3,4,5]" 
+                         [ngClass]="star <= product.rating ? 'bi bi-star-fill' : 'bi bi-star'"
+                         class="text-warning"></i>
+                      <span class="ms-2">({{ product.rating }})</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="product-description mb-4">
+            <h4>Description</h4>
+            <p>{{ product.description }}</p>
+          </div>
+          
+          <div class="actions">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Company Information Section -->
+      <div class="company-info mt-5">
+        <h3>Seller Information</h3>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h4>{{ product.company?.name }}</h4>
+                <p>Owner: {{ product.company?.ownerName }}</p>
+                <p>Address: {{ product.company?.address }}</p>
+                <p>License Activity: {{ product.company?.licenceActivity }}</p>
+                <div class="badges">
+                  <span *ngIf="product.company?.isVerified" class="badge bg-success me-2">Verified Seller</span>
+                  <span *ngIf="product.company?.isPhysicalShop" class="badge bg-info me-2">Physical Shop</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p><strong>Trade Number:</strong> {{ product.company?.tradeNumber }}</p>
+                <p><strong>License Number:</strong> {{ product.company?.licenseNumber }}</p>
+                <p><strong>License Expiry:</strong> {{ product.company?.licenseExpiry | date }}</p>
+                <p *ngIf="product.company?.commercialLicenseDoc">
+                  <a [href]="product.company?.commercialLicenseDoc" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-file-earmark-text"></i> View License Document
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

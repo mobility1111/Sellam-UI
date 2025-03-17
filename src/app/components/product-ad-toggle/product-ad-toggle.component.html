@@ -1,0 +1,17 @@
+<div class="toggle-container">
+  <div *ngIf="error" class="text-danger small mb-2">{{ error }}</div>
+  
+  <div class="form-check form-switch">
+    <input 
+      class="form-check-input" 
+      type="checkbox" 
+      [id]="'toggle_' + adId" 
+      [checked]="isActive"
+      (change)="toggleStatus()"
+      [disabled]="loading">
+    <label class="form-check-label" [for]="'toggle_' + adId">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+      {{ isActive ? 'Active' : 'Inactive' }}
+    </label>
+  </div>
+</div>

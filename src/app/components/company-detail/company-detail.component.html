@@ -1,0 +1,43 @@
+<div class="company-detail-container">
+    <button (click)="goBack()" class="back-button">← Back to Companies</button>
+  
+    <div *ngIf="loading" class="loading">
+      Loading company details...
+    </div>
+  
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="company && !loading && !error" class="company-detail">
+      <h2>{{ company.name }}</h2>
+      
+      <div class="company-info">
+        <div class="info-item">
+          <span class="label">User ID:</span>
+          <span class="value">{{ company.userId }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Owner:</span>
+          <span class="value">{{ company.ownerName }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Trade Number:</span>
+          <span class="value">{{ company.tradeNumber }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">License Number:</span>
+          <span class="value">{{ company.licenseNumber }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">License Expiry:</span>
+          <span class="value">{{ company.licenseExpiry | date:'mediumDate' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Activity:</span>
+          <span class="value">{{ company.licenceActivity }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

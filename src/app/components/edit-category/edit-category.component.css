@@ -1,0 +1,128 @@
+
+/* General Container Styles */
+.edit-category-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Loading & Error Messages */
+  .loading, .error-message {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  /* Validation Errors */
+  .validation-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Form Actions */
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .btn-submit, .btn-cancel {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border: none;
+    width: 48%;
+    text-align: center;
+  }
+  
+  .btn-submit {
+    background: #007bff;
+    color: white;
+  }
+  
+  .btn-submit:hover {
+    background: #0056b3;
+  }
+  
+  .btn-cancel {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .btn-cancel:hover {
+    background: #545b62;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .edit-category-container {
+      padding: 20px;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  
+    .btn-submit, .btn-cancel {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,173 @@
+
+/* General Styles */
+.category-list-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .btn-add {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .btn-add:hover {
+    background: #218838;
+  }
+  
+  /* Table */
+  .categories-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .categories-table th,
+  .categories-table td {
+    padding: 12px 16px;
+    text-align: left;
+  }
+  
+  .categories-table thead {
+    background: #007bff;
+    color: white;
+  }
+  
+  .categories-table tbody tr {
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .categories-table tbody tr:hover {
+    background: #e9ecef;
+  }
+  
+  /* Buttons */
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-edit,
+  .btn-view {
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+  }
+  
+  .btn-edit {
+    background: #ffc107;
+    color: #333;
+  }
+  
+  .btn-edit:hover {
+    background: #e0a800;
+  }
+  
+  .btn-view {
+    background: #17a2b8;
+    color: white;
+  }
+  
+  .btn-view:hover {
+    background: #138496;
+  }
+  
+  /* Loading & Error Messages */
+  .loading,
+  .error-message {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  /* Empty Message */
+  .empty-message {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .category-list-container {
+      padding: 15px;
+    }
+  
+    .header h2 {
+      font-size: 20px;
+    }
+  
+    .btn-add {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  
+    .categories-table th,
+    .categories-table td {
+      padding: 10px;
+    }
+  
+    .btn-edit,
+    .btn-view {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  }
+  
+  .category-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Adjust table layout for the new column */
+  .categories-table th,
+  .categories-table td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  /* Make sure the empty message spans all columns */
+  .empty-message {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #888;
+  }

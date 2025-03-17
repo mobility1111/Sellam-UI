@@ -1,0 +1,106 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h4>Create Product Ad</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="productAdForm" (ngSubmit)="onSubmit()">
+          <!-- <div class="mb-3">
+            <label for="productId" class="form-label">Product</label>
+            <select formControlName="productId" id="productId" class="form-select" 
+                    [ngClass]="{ 'is-invalid': submitted && f['productId'].errors }">
+              <option value="">Select a product</option>
+              <option *ngFor="let product of products" [value]="product.id">{{ product.title }}</option>
+
+            </select>
+            <div *ngIf="submitted && f['productId'].errors" class="invalid-feedback">
+              <div *ngIf="f['productId'].errors['required']">Product is required</div>
+            </div>
+          </div> -->
+  
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" formControlName="title" id="title" class="form-control" 
+                   [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
+            <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+              <div *ngIf="f['title'].errors['required']">Title is required</div>
+              <div *ngIf="f['title'].errors['maxlength']">Title must be less than 100 characters</div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="currency" class="form-label">Currency</label>
+              <select formControlName="currency" id="currency" class="form-select" 
+                      [ngClass]="{ 'is-invalid': submitted && f['currency'].errors }">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+              </select>
+              <div *ngIf="submitted && f['currency'].errors" class="invalid-feedback">
+                <div *ngIf="f['currency'].errors['required']">Currency is required</div>
+              </div>
+            </div>
+  
+            <div class="col-md-6 mb-3">
+              <label for="amount" class="form-label">Amount</label>
+              <input type="number" formControlName="amount" id="amount" class="form-control" 
+                     [ngClass]="{ 'is-invalid': submitted && f['amount'].errors }">
+              <div *ngIf="submitted && f['amount'].errors" class="invalid-feedback">
+                <div *ngIf="f['amount'].errors['required']">Amount is required</div>
+                <div *ngIf="f['amount'].errors['min']">Amount must be greater than or equal to 0</div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">Ad Type</label>
+            <div class="row">
+              <div class="col-md-4" *ngFor="let type of adTypes">
+                <div class="card mb-2">
+                  <div class="card-body">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" [value]="type" formControlName="adType" 
+                             [id]="'adType_' + type">
+                      <label class="form-check-label" [for]="'adType_' + type">
+                        {{ type }}
+                      </label>
+                    </div>
+                    <div class="mt-2 text-muted small">
+                      <ng-container [ngSwitch]="type">
+                        <ng-container *ngSwitchCase="'Basic'">
+                          Basic visibility for your product
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Standard'">
+                          Enhanced visibility with better placement
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Premium'">
+                          Maximum visibility with featured placement
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+          </div>
+  
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-secondary me-md-2" [routerLink]="['/product-ads']">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+              Create Ad
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+

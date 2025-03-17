@@ -1,0 +1,60 @@
+<div class="companies-container">
+    <h2>Companies</h2>
+  
+    <div class="filter-section">
+      <label>
+        <span>Verified Status:</span>
+        <select [(ngModel)]="isVerifiedFilter">
+          <option [ngValue]="undefined">All</option>
+          <option [ngValue]="true">Verified</option>
+          <option [ngValue]="false">Not Verified</option>
+        </select>
+      </label>
+      <button (click)="applyFilter()">Apply Filter</button>
+      <button (click)="resetFilter()">Reset</button>
+    </div>
+  
+    <div *ngIf="loading" class="loading">
+      Loading companies...
+    </div>
+  
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="!loading && !error && companies?.length; else noData">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th>User ID</th> -->
+            <th>Name</th>
+            <th>Owner</th>
+            <th>License Number</th>
+            <th>License Expiry</th>
+            <th>Activity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <!-- <td>{{ company.userId }}</td> -->
+            <td>{{ company.name }}</td>
+            <td>{{ company.ownerName }}</td>
+            <td>{{ company.licenseNumber }}</td>
+            <td>{{ company.licenseExpiry | date:'mediumDate' }}</td>
+            <td>{{ company.licenceActivity }}</td>
+            <td>
+                <a [routerLink]="['/company', company.userId]">View Details</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <ng-template #noData>
+      <div class="no-data">
+        No companies found.
+      </div>
+    </ng-template>
+  </div>
+  
