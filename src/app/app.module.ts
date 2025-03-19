@@ -21,6 +21,7 @@ import { ProductAdDetailComponent } from './components/product-ad-detail/product
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     ProductAdDetailComponent,
     LoginComponent,
     NavBarComponent,
-    UserListComponent
+    UserListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

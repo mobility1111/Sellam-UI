@@ -14,22 +14,23 @@ import { ProductAdDetailComponent } from './components/product-ad-detail/product
 import { EditProductAdComponent } from './components/edit-product-ad/edit-product-ad.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'categories', component: CategoryListComponent },
-  { path: 'category-form', component: CategoryFormComponent },
-  { path: 'category-edit/:id', component: EditCategoryComponent },
-  { path: 'category-detail/:id', component: CategoryDetailComponent },
-  { path: 'companies', component: CompaniesComponent },
-  { path: 'company/:id', component: CompanyDetailComponent },
-  { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
-  { path: 'product-ads', component: ProductAdListComponent },
-  { path: 'create-product-ad', component: CreateProductAdComponent },
-  { path: 'product-ad/:id', component: ProductAdDetailComponent },
-  { path: 'edit-product-ad/:id', component: EditProductAdComponent },
+  { path: 'categories', canMatch: [authGuard], component: CategoryListComponent },
+  { path: 'category-form', canMatch: [authGuard], component: CategoryFormComponent },
+  { path: 'category-edit/:id', canMatch: [authGuard], component: EditCategoryComponent },
+  { path: 'category-detail/:id', canMatch: [authGuard], component: CategoryDetailComponent },
+  { path: 'companies', canMatch: [authGuard], component: CompaniesComponent },
+  { path: 'company/:id', canMatch: [authGuard], component: CompanyDetailComponent },
+  { path: 'products', canMatch: [authGuard], component: ProductListComponent },
+  { path: 'products/:id', canMatch: [authGuard], component: ProductDetailComponent },
+  { path: 'product-ads', canMatch: [authGuard], component: ProductAdListComponent },
+  { path: 'create-product-ad', canMatch: [authGuard], component: CreateProductAdComponent },
+  { path: 'product-ad/:id', canMatch: [authGuard], component: ProductAdDetailComponent },
+  { path: 'edit-product-ad/:id', canMatch: [authGuard], component: EditProductAdComponent },
   { path: 'login', component:   LoginComponent},
-  { path: 'users', component: UserListComponent},
+  { path: 'users', canMatch: [authGuard], component: UserListComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

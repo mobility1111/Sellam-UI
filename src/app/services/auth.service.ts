@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { StorageService } from './storage.service';
+import { Constants } from '../models/constants';
 
 interface AuthResponse {
   token: string | null;
@@ -17,7 +19,10 @@ interface AuthResponse {
 export class AuthService {
   private apiUrl = 'https://dasie1-001-site1.otempurl.com/api/auth';
   
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private storage: StorageService,
+  ) { }
   
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { email, password })
@@ -40,5 +45,11 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
+  }
+
+  clearSession() {
+    this.storage.remove(Constants.STORAGE_VARIABLES.TOKEN);
+    this.storage.remove(Constants.STORAGE_VARIABLES.USER);
+    // this.userProfile.updateProfile(null);
   }
 }
