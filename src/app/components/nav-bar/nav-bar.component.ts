@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,15 +9,40 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent {
 
+  isSidebarCollapsed = false;
+  isMobile = false;
+
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
-  isMenuOpen = false;
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
   }
 
+  ngOnInit(): void {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 992;
+    // On mobile, sidebar should be collapsed by default
+    if (this.isMobile && !this.isSidebarCollapsed) {
+      this.isSidebarCollapsed = true;
+    }
+  }
+
+  toggleSidebar(): void {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+    
+    // Add/remove class to body to help with content adjustments
+    if (this.isSidebarCollapsed) {
+      document.body.classList.add('sidebar-collapsed');
+    } else {
+      document.body.classList.remove('sidebar-collapsed');
+    }
+  }
   logout() {
     this.authService.logout();
     this.router.navigate(['/login'])

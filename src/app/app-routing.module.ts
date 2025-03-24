@@ -15,6 +15,7 @@ import { EditProductAdComponent } from './components/edit-product-ad/edit-produc
 import { LoginComponent } from './components/login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { authGuard } from './guards/auth.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'categories', canMatch: [authGuard], component: CategoryListComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'edit-product-ad/:id', canMatch: [authGuard], component: EditProductAdComponent },
   { path: 'login', component:   LoginComponent},
   { path: 'users', canMatch: [authGuard], component: UserListComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({

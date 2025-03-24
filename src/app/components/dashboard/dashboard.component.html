@@ -1,1 +1,51 @@
-<p>dashboard works!</p>
+
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Admin Dashboard</h2>
+
+  <div class="dashboard-cards">
+    <div class="card">
+      <i class="bi bi-list-task card-icon"></i>
+      <h3>Categories</h3>
+      <p>Manage all product categories</p>
+      <a routerLink="/categories" class="btn">View Categories</a>
+    </div>
+    
+    <div class="card">
+      <i class="bi bi-building card-icon"></i>
+      <h3>Companies</h3>
+      <p>View and manage companies</p>
+      <a routerLink="/companies" class="btn">View Companies</a>
+    </div>
+    
+    <div class="card">
+      <i class="bi bi-box card-icon"></i>
+      <h3>Products</h3>
+      <p>Check product listings</p>
+      <a routerLink="/products" class="btn">View Products</a>
+    </div>
+    
+    <div class="card">
+      <i class="bi bi-megaphone card-icon"></i>
+      <h3>Product Ads</h3>
+      <p>Manage advertisements</p>
+      <a routerLink="/product-ads" class="btn">View Ads</a>
+    </div>
+    
+    <div class="card">
+      <i class="bi bi-people card-icon"></i>
+      <h3>Users</h3>
+      <p>Manage all users</p>
+      <a routerLink="/users" class="btn">View Users</a>
+    </div>
+  </div>
+
+  <div class="dashboard-recent">
+    <h3>Recent Activities</h3>
+    <ul>
+      <li><i class="bi bi-check-circle"></i> New category added</li>
+      <li><i class="bi bi-building"></i> A new company registered</li>
+      <li><i class="bi bi-megaphone"></i> Product ad was approved</li>
+      <li><i class="bi bi-box"></i> A new product was listed</li>
+    </ul>
+  </div>
+</div>

@@ -25,7 +25,7 @@ export class CreateProductAdComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.loadProducts();
+    //this.loadProducts();
   }
 
   private initForm(): void {
@@ -37,16 +37,16 @@ export class CreateProductAdComponent implements OnInit {
     });
   }
 
-  private loadProducts(): void {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-        this.products = products;
-      },
-      error: (err) => {
-        this.error = 'Failed to load products.';
-      }
-    });
-  }
+  // private loadProducts(): void {
+  //   this.productService.getProducts().subscribe({
+  //     next: (products) => {
+  //       this.products = products;
+  //     },
+  //     error: (err) => {
+  //       this.error = 'Failed to load products.';
+  //     }
+  //   });
+  // }
 
   get f() {
     return this.productAdForm.controls;

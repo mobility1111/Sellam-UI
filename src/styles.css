@@ -1,10 +1,7 @@
-/* styles.css or styles.scss */
-body {
-    padding-top: 90px; /* Adjust based on your navbar height plus desired spacing */
-  }
-  
-  .main-content {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.875rem;
+    background-color: #f8f9fa;
   }

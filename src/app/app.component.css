@@ -1,0 +1,72 @@
+
+/* src/app/dashboard/dashboard.component.css */
+
+/* General Dashboard Styles */
+.dashboard-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #0056b3;
+    color: white;
+    padding-top: 20px;
+  }
+  
+  .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+  
+  /* Sidebar Navigation */
+  .nav-link {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  /* Main Content */
+  .content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    background: #f4f7fc;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  /* Cards */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Chart Placeholder */
+  .chart-placeholder {
+    height: 200px;
+    background: #e9ecef;
+    border-radius: 10px;
+  }
+  
+  /* Progress Circles */
+  .progress-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+  }
+  
