@@ -16,6 +16,9 @@ import { LoginComponent } from './components/login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { authGuard } from './guards/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BannerListComponent } from './components/banner-list/banner-list.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 const routes: Routes = [
   { path: 'categories', canMatch: [authGuard], component: CategoryListComponent },
@@ -32,7 +35,10 @@ const routes: Routes = [
   { path: 'edit-product-ad/:id', canMatch: [authGuard], component: EditProductAdComponent },
   { path: 'login', component:   LoginComponent},
   { path: 'users', canMatch: [authGuard], component: UserListComponent},
+  { path: 'users/:userId', canMatch: [authGuard], component: UserDetailsComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'notifications', component:   NotificationsComponent},
+  { path: 'banners', component:   BannerListComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 

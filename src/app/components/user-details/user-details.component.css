@@ -1,0 +1,28 @@
+
+.user-details-container {
+    padding: 1.5rem;
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .card {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card-header {
+    background-color: #f8f9fa;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+  }

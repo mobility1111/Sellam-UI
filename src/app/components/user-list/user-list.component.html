@@ -1,4 +1,3 @@
-
 <div class="users-container">
   <div class="users-header">
     <h2>User List</h2>
@@ -40,8 +39,36 @@
           <td>{{ user.phoneNumber || 'N/A' }}</td>
           <td>{{ user.accountType === 0 ? 'Regular' : 'Admin' }}</td>
           <td>
-            <button class="btn btn-sm btn-info me-2">View</button>
-            <button class="btn btn-sm btn-danger">Delete</button>
+            <div class="d-flex flex-column">
+              <button 
+                class="btn btn-sm btn-info mb-1"
+                [routerLink]="['/users', user.userId]"
+              >
+                View
+              </button>
+              <button 
+                class="btn btn-sm btn-warning mb-1" 
+                (click)="disableUser(user.userId)"
+                [disabled]="actionLoading[user.userId]"
+              >
+                {{ actionLoading[user.userId] ? 'Disabling...' : 'Disable' }}
+              </button>
+              <button 
+                class="btn btn-sm btn-danger" 
+                (click)="deleteUser(user.userId)"
+                [disabled]="actionLoading[user.userId]"
+              >
+                {{ actionLoading[user.userId] ? 'Deleting...' : 'Delete' }}
+              </button>
+              
+              <!-- Error message for specific user actions -->
+              <small 
+                *ngIf="actionError[user.userId]" 
+                class="text-danger mt-1"
+              >
+                {{ actionError[user.userId] }}
+              </small>
+            </div>
           </td>
         </tr>
       </tbody>

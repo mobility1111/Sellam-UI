@@ -22,6 +22,9 @@ import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BannerListComponent } from './components/banner-list/banner-list.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     NavBarComponent,
     UserListComponent,
-    DashboardComponent
+    DashboardComponent,
+    BannerListComponent,
+    NotificationsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

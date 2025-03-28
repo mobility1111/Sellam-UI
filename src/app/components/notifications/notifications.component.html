@@ -1,0 +1,42 @@
+<div class="notifications-container">
+    <h2>Notifications</h2>
+    
+    <div *ngIf="loading" class="loading">
+      <p>Loading notifications...</p>
+    </div>
+    
+    <div *ngIf="error" class="error">
+      <p>{{ error }}</p>
+    </div>
+    
+    <div *ngIf="!loading && notifications.length === 0" class="no-notifications">
+      <p>No notifications found.</p>
+    </div>
+    
+    <div *ngFor="let notification of notifications" class="notification-card">
+      <div class="notification-header">
+        <h3>{{ notification?.title || 'Untitled Notification' }}</h3>
+        <button 
+          class="delete-btn" 
+          (click)="deleteNotification(notification?.id || 0)"
+          aria-label="Delete Notification"
+        >
+          ✖
+        </button>
+      </div>
+      
+      <p class="notification-body">{{ notification?.body || 'No description' }}</p>
+      
+      <div *ngIf="notification?.image" class="notification-image-container">
+        <img 
+          [src]="notification?.image" 
+          [alt]="notification?.title || 'Notification Image'" 
+          class="notification-image"
+        >
+      </div>
+      
+      <div class="notification-footer">
+        <small>Created: {{ notification?.createdDate | date:'medium' }}</small>
+      </div>
+    </div>
+  </div>

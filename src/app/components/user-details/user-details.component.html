@@ -1,0 +1,41 @@
+<div class="user-details-container">
+    <!-- Loading Spinner -->
+    <div class="loading-container" *ngIf="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+  
+    <!-- User Details -->
+    <div *ngIf="!loading && !error && user" class="card">
+      <div class="card-header">
+        <h2>User Details</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Personal Information</h5>
+            <p><strong>Full Name:</strong> {{ user.fullName }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Username:</strong> {{ user.userName }}</p>
+          </div>
+          <div class="col-md-6">
+            <h5>Additional Details</h5>
+            <p><strong>Country:</strong> {{ user.country }}</p>
+            <p><strong>Phone Number:</strong> {{ user.phoneNumber || 'N/A' }}</p>
+            <p><strong>Account Type:</strong> 
+              {{ user.accountType === 0 ? 'Regular User' : 'Admin' }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-secondary" (click)="goBack()">Back to Users</button>
+      </div>
+    </div>
+  </div>

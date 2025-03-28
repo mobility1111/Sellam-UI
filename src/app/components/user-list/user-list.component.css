@@ -1,25 +1,24 @@
 
-/* src/app/features/users/user-list/user-list.component.scss */
 .users-container {
-    padding: 1.5rem;
-  }
-  
-  .users-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
-  .no-users-message {
-    text-align: center;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-  }
+  padding: 1.5rem;
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.no-users-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}

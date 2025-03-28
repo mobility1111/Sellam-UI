@@ -1,0 +1,86 @@
+<div class="container-fluid p-4">
+  <!-- Error Alert -->
+  <div *ngIf="errorMessage" class="alert alert-danger error-alert mb-3">
+      {{ errorMessage }}
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading-spinner d-flex justify-content-center">
+      <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+  </div>
+
+  <!-- File Upload Container -->
+  <div class="banner-upload-container mb-4">
+      <div class="row align-items-center">
+          <div class="col-md-8">
+              <h2 class="mb-3">Upload Banners</h2>
+              <p class="text-muted">
+                  Select multiple image files to upload 
+                  <small class="d-block text-info">
+                      (Max 5MB per file, JPEG, PNG, GIF, WebP allowed)
+                  </small>
+              </p>
+
+              <!-- Selected Files Display -->
+              <div *ngIf="selectedFiles.length > 0" class="alert alert-info mt-2">
+                  <strong>Selected Files:</strong> {{ getSelectedFileNames() }}
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="input-group">
+                  <input
+                      type="file"
+                      #fileInput
+                      (change)="onFileSelected($event)"
+                      multiple
+                      accept="image/jpeg,image/png,image/gif,image/webp"
+                      class="form-control"
+                      [disabled]="isLoading"
+                  >
+                  <button
+                      class="btn btn-primary"
+                      (click)="uploadSelectedFiles()"
+                      [disabled]="isLoading || selectedFiles.length === 0"
+                  >
+                      <i class="bi bi-upload me-2"></i>Upload
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Banners Grid -->
+  <div *ngIf="!isLoading" class="banners-wrapper">
+      <div class="banners-container">
+          <div *ngFor="let banner of banners" class="banner-wrapper">
+              <div class="banner-card">
+                  <div class="banner-image-container">
+                      <img
+                          [src]="banner.url"
+                          class="banner-image"
+                          [alt]="banner.fileName || 'Banner Image'"
+                          (error)="handleImageError($event)"
+                      >
+                      <div class="banner-overlay">
+                          <button 
+                              class="btn btn-danger banner-delete-btn"
+                              (click)="deleteBanner(banner.publicId)"
+                              [disabled]="isLoading"
+                          >
+                              <i class="bi bi-trash"></i> Delete
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- No Banners Message -->
+  <div *ngIf="!isLoading && banners.length === 0" class="text-center my-4">
+      <h3 class="text-muted">No banners found</h3>
+      <p class="text-muted">Upload some banners to get started!</p>
+  </div>
+</div>
